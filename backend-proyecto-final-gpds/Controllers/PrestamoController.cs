@@ -9,7 +9,7 @@ namespace backend_proyecto_final_gpds.Controllers
     [EnableCors("DevelopmentCors")]
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class PrestamoController : ControllerBase
     {
         #region Fields
         private readonly IConfiguration _configuration;
@@ -17,7 +17,7 @@ namespace backend_proyecto_final_gpds.Controllers
         #endregion Fields
 
         #region Constructors
-        public UsuarioController(IConfiguration configuration)
+        public PrestamoController(IConfiguration configuration)
         {
             _configuration = configuration;
             connectionString =
@@ -32,7 +32,7 @@ namespace backend_proyecto_final_gpds.Controllers
         {
             try
             {
-                var result = UsuarioServicios.Get();
+                var result = PrestamoServicios.Get();
                 return Ok(result);
             }
             catch (Exception ex)
@@ -43,11 +43,11 @@ namespace backend_proyecto_final_gpds.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        public IActionResult GetUsuarioById(int id)
+        public IActionResult GetPrestamoById(int id)
         {
             try
             {
-                var result = UsuarioServicios.GetById<Usuario>(id);
+                var result = PrestamoServicios.GetById(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -57,12 +57,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("AddUsuario")]
-        public IActionResult Insert(Usuario usuario)
+        [Route("AddPrestamo")]
+        public IActionResult Insert(Prestamo prestamo)
         {
             try
             {
-                var result = UsuarioServicios.Insert(usuario);
+                var result = PrestamoServicios.Insert(prestamo);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -72,12 +72,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("UpdateUsuario")]
-        public IActionResult Update(Usuario usuario)
+        [Route("UpdatePrestamo")]
+        public IActionResult Update(Prestamo prestamo)
         {
             try
             {
-                var result = UsuarioServicios.Update(usuario);
+                var result = PrestamoServicios.Update(prestamo);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -87,12 +87,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("DeleteUsuario")]
+        [Route("DeletePrestamo")]
         public IActionResult Delete(int id)
         {
             try
             {
-                var result = UsuarioServicios.Delete(id);
+                var result = PrestamoServicios.Delete(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -102,12 +102,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("RecoverUsuario")]
+        [Route("RecoverPrestamo")]
         public IActionResult Recover(int id)
         {
             try
             {
-                var result = UsuarioServicios.Recover(id);
+                var result = PrestamoServicios.Recover(id);
                 return Ok(result);
             }
             catch (Exception ex)

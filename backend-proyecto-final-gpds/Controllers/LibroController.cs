@@ -9,7 +9,7 @@ namespace backend_proyecto_final_gpds.Controllers
     [EnableCors("DevelopmentCors")]
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class LibroController : ControllerBase
     {
         #region Fields
         private readonly IConfiguration _configuration;
@@ -17,7 +17,7 @@ namespace backend_proyecto_final_gpds.Controllers
         #endregion Fields
 
         #region Constructors
-        public UsuarioController(IConfiguration configuration)
+        public LibroController(IConfiguration configuration)
         {
             _configuration = configuration;
             connectionString =
@@ -32,7 +32,7 @@ namespace backend_proyecto_final_gpds.Controllers
         {
             try
             {
-                var result = UsuarioServicios.Get();
+                var result = LibroServicios.Get();
                 return Ok(result);
             }
             catch (Exception ex)
@@ -43,11 +43,11 @@ namespace backend_proyecto_final_gpds.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        public IActionResult GetUsuarioById(int id)
+        public IActionResult GetLibroById(int id)
         {
             try
             {
-                var result = UsuarioServicios.GetById<Usuario>(id);
+                var result = LibroServicios.GetById<Libro>(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -57,12 +57,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("AddUsuario")]
-        public IActionResult Insert(Usuario usuario)
+        [Route("AddLibro")]
+        public IActionResult Insert(Libro libro)
         {
             try
             {
-                var result = UsuarioServicios.Insert(usuario);
+                var result = LibroServicios.Insert(libro);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -72,12 +72,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("UpdateUsuario")]
-        public IActionResult Update(Usuario usuario)
+        [Route("UpdateLibro")]
+        public IActionResult Update(Libro libro)
         {
             try
             {
-                var result = UsuarioServicios.Update(usuario);
+                var result = LibroServicios.Update(libro);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -87,12 +87,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("DeleteUsuario")]
+        [Route("DeleteLibro")]
         public IActionResult Delete(int id)
         {
             try
             {
-                var result = UsuarioServicios.Delete(id);
+                var result = LibroServicios.Delete(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -102,12 +102,12 @@ namespace backend_proyecto_final_gpds.Controllers
         }
 
         [HttpPost]
-        [Route("RecoverUsuario")]
+        [Route("RecoverLibro")]
         public IActionResult Recover(int id)
         {
             try
             {
-                var result = UsuarioServicios.Recover(id);
+                var result = LibroServicios.Recover(id);
                 return Ok(result);
             }
             catch (Exception ex)

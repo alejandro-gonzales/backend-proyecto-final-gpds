@@ -17,14 +17,10 @@ namespace backend_proyecto_final_gpds.Servicios
         public static T GetById<T>(int id) where T : Usuario
         {
             const string sql = "SELECT * FROM USUARIO WHERE ID = @Id AND ESTADO_REGISTRO = 1";
-
             var parameters = new DynamicParameters();
             parameters.Add("ID", id, DbType.Int64);
-
             var result = DBManager.Instance.GetDataConParametros<T>(sql, parameters);
-
             return result.FirstOrDefault();
-
         }
 
         public static int Insert(Usuario usuario)
@@ -55,10 +51,8 @@ namespace backend_proyecto_final_gpds.Servicios
         public static int Delete(int id)
         {
             const string sql = "UPDATE [USUARIO] SET ESTADO_REGISTRO = 0 WHERE ID = @Id";
-
             var parameters = new DynamicParameters();
             parameters.Add("ID", id, DbType.Int64);
-
             var result = DBManager.Instance.SetData(sql, parameters);
             return result;
         }
@@ -66,13 +60,10 @@ namespace backend_proyecto_final_gpds.Servicios
         public static int Recover(int id)
         {
             const string sql = "UPDATE [USUARIO] SET ESTADO_REGISTRO = 1 WHERE ID = @Id";
-
             var parameters = new DynamicParameters();
             parameters.Add("ID", id, DbType.Int64);
-
             var result = DBManager.Instance.SetData(sql, parameters);
             return result;
         }
-
     }
 }
