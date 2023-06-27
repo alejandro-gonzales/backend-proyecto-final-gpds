@@ -1,6 +1,8 @@
 ﻿using backend_proyecto_final_gpds.Connection;
 using backend_proyecto_final_gpds.Dominio;
 using Dapper;
+//using System;
+//using System.Globalization;
 using System.Data;
 
 
@@ -10,7 +12,8 @@ namespace backend_proyecto_final_gpds.Servicios
     {
         public static IEnumerable<Prestamo> Get()
         {
-            const string sql = "SELECT * FROM PRESTAMO WHERE ESTADO_REGISTRO = 1";
+            //const string sql = "SELECT * FROM PRESTAMO WHERE ESTADO_REGISTRO = 1";
+            const string sql = "SELECT ID, ID_USUARIO, ID_LIBRO, CONVERT(VARCHAR(10), FECHA_RETIRO, 120) AS FECHA_RETIRO, CONVERT(VARCHAR(10), FECHA_DEVOLUCION, 120) AS FECHA_DEVOLUCION, FECHA_REGISTRO, ESTADO_REGISTRO\r\nFROM PRESTAMO\r\nWHERE ESTADO_REGISTRO = 1;";
             var enummerablePrestamo = DBManager.Instance.GetData<Prestamo>(sql);
             foreach (var item in enummerablePrestamo)
             {
