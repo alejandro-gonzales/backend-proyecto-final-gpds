@@ -73,12 +73,20 @@ tbl_prestamo
   REFERENCES LIBRO("ID");*/
 
 
-
 /*select * from USUARIO*/
 /*select * from LIBRO*/
 /*select * from PRESTAMO*/
 
+
+/*DROP TABLE USUARIO;*/
+/*DROP TABLE LIBRO;*/
 /*DROP TABLE PRESTAMO;*/
+
+/*UPDATE USUARIO SET ESTADO_REGISTRO = 1*/
+/*UPDATE LIBRO SET ESTADO_REGISTRO = 1*/
+/*UPDATE PRESTAMO SET ESTADO_REGISTRO = 0*/
+
+
 
 
 
